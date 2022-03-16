@@ -1,0 +1,14 @@
+// problems/contains-duplicate/
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Map<Integer, Integer> duplicateMap = new HashMap<Integer,Integer>();
+        for(int i: nums){
+            if(!duplicateMap.containsKey(i)){
+                duplicateMap.put(i,1);
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+}
