@@ -1,0 +1,20 @@
+class FirstUniqueCharacterInAString {
+// 387.problems/first-unique-character-in-a-string/ [NB]
+    public int firstUniqChar(String s) {
+        LinkedHashMap<Character, Integer> charList
+            = new LinkedHashMap<Character, Integer>();
+        for (int i = 0; i < s.length(); i++) {
+            if(charList.containsKey(s.charAt(i))){
+                charList.put(s.charAt(i), -1);
+            }else{
+                charList.put(s.charAt(i), i);
+            }
+        }
+        for (Map.Entry<Character, Integer> entry : charList.entrySet()){
+            if(entry.getValue() != -1){
+                return entry.getValue();
+            }
+        }
+        return -1;
+    }
+}
