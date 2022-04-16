@@ -16,23 +16,21 @@
  // 653.problems/two-sum-iv-input-is-a-bst/
 class TwoSumInputIsABst {
     public boolean findTarget(TreeNode root, int k) {
-        Map<Integer,Integer> numberMap = new HashMap<Integer,Integer>();
+        Set<Integer> numberSet = new HashSet<>();
         if (root == null || (root.right == null && root.left == null)){
             return false;
         }
-        return crawlBinaryTree(root, k, numberMap);
+        return crawlBinaryTree(root, k, numberSet);
     }
     
-    private boolean crawlBinaryTree(TreeNode root, int k, Map numberMap){
+    private boolean crawlBinaryTree(TreeNode root, int k, Set numberSet){
         if(root != null){
-            int requiredNumber = 0;
-            requiredNumber = k-root.val;
-            if(numberMap.containsKey(requiredNumber)){
+            if(numberSet.contains(k-root.val)){
                 return true;
             }else{
-               numberMap.put(root.val,0); 
+               numberSet.add(root.val); 
             }
-            if(crawlBinaryTree(root.left,k,numberMap) || crawlBinaryTree(root.right,k,numberMap)){
+            if(crawlBinaryTree(root.left,k,numberSet) || crawlBinaryTree(root.right,k,numberSet)){
                  return true;
             }
         }
