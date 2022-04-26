@@ -1,5 +1,6 @@
 class MajorityElement {
 // 169. problems/majority-element/
+    //Moore Voting Algorithm
     public int majorityElement(int[] nums) {
         int majorityElement=0;
         int count=0;
